@@ -1,31 +1,25 @@
- Comproba que a tes a imaxe http
+1-Comproba que a tes a imaxe http
  
- Usamos o comando ( docker images ) para ver se temos a imaxe.
+    Usamos o comando ( docker images ) para ver se temos a imaxe.
  
-Crea un contenedor de nome 'asir_httpd'.
+2-Crea un contenedor de nome 'asir_httpd'. Mapea o porto 80 do contenedor có 8080 da túa máquina. Utiliza bind mount para que o directorio do apache2 'htdocs' estea montado nun directorio da túa elección. Utiliza -v "$PWD"/htdocs:/usr/local/apache2/htdocs/
 
-Mapea o porto 80 do contenedor có 8080 da túa máquina.
+    Para estes pasos utilicei o comando ( docker run -d --name asir_httpd -p 8080:80 -v "$PWD"/htdocs:/usr/local/       apache2/htdocs/ httpd )
 
-Utiliza bind mount para que o directorio do apache2 'htdocs' estea montado nun directorio da túa elección.
+3-Mostra unha páxina html aloxada no apache2 dende o teu navegador.
 
-Utiliza -v "$PWD"/htdocs:/usr/local/apache2/htdocs/
+    Utilicei unha paxina html que xa tiña.
 
-Para estes pasos utilicei o comando ( docker run -d --name asir_httpd -p 8080:80 -v "$PWD"/htdocs:/usr/local/apache2/htdocs/ httpd )
+4-Crea un contenedor 'asir_web1' que use este mesmo directorio para 'htdocs' e o puerto 8000
 
-Mostra unha páxina html aloxada no apache2 dende o teu navegador.
+    ( docker run -d --name asir_web1 -p 8080:80 -v "$PWD"/htdocs:/usr/local/apache2/htdocs/ httpd )
 
-Utilicei unha paxina html que xa tiña.
+5-Crea outro contenedor 'asir_web2' có el mesmo directorio e otro puerto, como o 8090.
 
-Crea un contenedor 'asir_web1' que use este mesmo directorio para 'htdocs' e o puerto 8000
+    ( docker run -d --name asir_web2 -p 8090:80 -v "$PWD"/htdocs:/usr/local/apache2/htdocs/ httpd )
 
-( docker run -d --name asir_web1 -p 8080:80 -v "$PWD"/htdocs:/usr/local/apache2/htdocs/ httpd )
+6-Comproba que los dous servidores mostran a mesma páxina
 
-Crea outro contenedor 'asir_web2' có el mesmo directorio e otro puerto, como o 8090.
-
-( docker run -d --name asir_web2 -p 8090:80 -v "$PWD"/htdocs:/usr/local/apache2/htdocs/ httpd )
-
-Comproba que los dous servidores mostran a mesma páxina
-
-Se na misma carpeta tes a paxina html cando no buscador web poñas localhost:8080 ou localhost:8090 mostrarase a paxina html
+    Se na misma carpeta tes a paxina html cando no buscador web poñas localhost:8080 ou localhost:8090 mostrarase a paxina html
 
 Fai a entrega describindo os pasos usados con comandos no readme dun proxecto público en git, adxunta no entregable o enlace
