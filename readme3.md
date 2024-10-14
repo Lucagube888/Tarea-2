@@ -1,6 +1,6 @@
 <h2>1-Comproba que a tes a imaxe http</h2>
  
-Usamos o comando (  docker images ) para ver se temos a imaxe.
+Usamos o comando (  docker images) para ver se temos a imaxe.
  
 <h2>2-Crea un contenedor de nome 'asir_httpd'. Mapea o porto 80 do contenedor có 8080 da túa máquina. Utiliza bind mount para que o directorio do apache2 'htdocs' estea montado nun directorio da túa elección. Utiliza -v "$PWD"/htdocs:/usr/local/apache2/htdocs/</h2>
 
